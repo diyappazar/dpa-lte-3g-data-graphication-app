@@ -26,6 +26,7 @@ namespace WpfApp2
             InitializeComponent();
             this.chart();
             this.datosbacis();
+            //MessageBox dsfsdfasdfsdafdsf
     
         }
 
