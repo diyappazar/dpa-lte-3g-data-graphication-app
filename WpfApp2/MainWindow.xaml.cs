@@ -14,6 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
+using System.IO;
+using Renci.SshNet;
+using Renci.SshNet.Common;
+using Renci.SshNet.Sftp;
+
 namespace WpfApp2
 {
 
@@ -24,10 +29,28 @@ namespace WpfApp2
             InitializeComponent();
             this.chart();
             this.datosbacis();
-            //MessageBox metiiiiiin
+            this.getFile();
     
         }
+        public void getFile() //Bu fonksiyon SFTP/FTP server'dan belirtilen dosyayı indirecek.
+        {
+            String Host = "68.183.74.196";
+            int Port = 22;
+            String RemoteFileName = "/var/test.csv";
+            String LocalDestinationFilename = @"in_process/new.csv";
+            String Username = "root";
+            String Password = "Diyap11Pazar";
 
+            using (var sftp = new SftpClient(Host, Port, Username, Password))
+            {
+                sftp.Connect();   
+                using (var file = File.OpenWrite(LocalDestinationFilename))
+                {
+                    sftp.DownloadFile(RemoteFileName, file);
+                }
+                sftp.Disconnect();
+            }
+        }
         public void chart()
         {
             PointLabel = chartPoint =>
