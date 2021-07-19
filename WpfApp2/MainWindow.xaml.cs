@@ -30,8 +30,9 @@ namespace WpfApp2
             this.chart();
             this.datosbacis();
             this.getFile();
-    
+            Boolean status = false;
         }
+        
         public void getFile() //Bu fonksiyon SFTP/FTP server'dan belirtilen dosyayı indirecek.
         {
             String Host = "68.183.74.196";
@@ -47,8 +48,10 @@ namespace WpfApp2
                 using (var file = File.OpenWrite(LocalDestinationFilename))
                 {
                     sftp.DownloadFile(RemoteFileName, file);
+                    this.status = true;
                 }
                 sftp.Disconnect();
+               
             }
         }
         public void chart()
@@ -139,6 +142,32 @@ namespace WpfApp2
         private void ButtonsDemoChip_Click_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.getFile();
+        }
+
+        private void PieChart_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void ProgressBar_ValueChanged_6(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (this.status == true)
+            {
+                p1.Value = 100;
+            }
+            else
+            {
+                p1.Value = 0;
+            }
         }
     }
 }

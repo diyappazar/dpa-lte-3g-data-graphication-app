@@ -8,17 +8,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="582" Width="1085.3" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None">
     <Grid SnapsToDevicePixels="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="1019*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="271*"/>
             <RowDefinition Height="311*"/>
         </Grid.RowDefinitions>
         <materialDesign:Card
     materialDesign:ShadowAssist.ShadowDepth="Depth1"
-    Padding="32" HorizontalAlignment="Right" Width="634" Margin="0,253,19,0" Height="284" Content="" Grid.RowSpan="2"/>
+    Padding="32" HorizontalAlignment="Right" Width="634" Margin="0,253,19,0" Height="284" Content="" Grid.RowSpan="2" Grid.Column="1"/>
 
         <materialDesign:ColorZone
   Mode="PrimaryMid"
-  Padding="16" Background="#104e9f">
+  Padding="16" Background="#104e9f" Grid.ColumnSpan="2">
             <DockPanel>
                 <StackPanel
       Orientation="Horizontal"
@@ -35,14 +39,14 @@
         <ToggleButton
   Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
   ToolTip="MaterialDesignFlatPrimaryToggleButton"
-  IsChecked="False" Margin="834,21,221,222" Height="Auto" Width="Auto" Foreground="#FF56618D">
+  IsChecked="False" Margin="768,21,221,222" Height="Auto" Width="Auto" Foreground="#FF56618D" Grid.Column="1">
             <materialDesign:PackIcon
     Kind="NotificationsActive"
     Height="21"
     Width="21" Foreground="White" />
         </ToggleButton>
 
-        <Separator HorizontalAlignment="Left" Height="16" Margin="874,28,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.5,0.5">
+        <Separator HorizontalAlignment="Left" Height="16" Margin="808,28,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
             <Separator.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -55,14 +59,14 @@
         <materialDesign:Card
   Background="#104e9f"
   Foreground="#DDFFFFFF"
-  Padding="32"  UniformCornerRadius="0" Margin="0,72,987,0" Height="510" Grid.RowSpan="2"/>
+  Padding="32"  UniformCornerRadius="0" Margin="0,72,987,0" Height="510" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
 
         <materialDesign:Chip
   Content="Hello Metin&#xD;&#xA;"
   IsDeletable="True"
   x:Name="ButtonsDemoChip"
   ToolTip="Just a tool tip"
-  DeleteToolTip="Your friendly neighbour delete button" Margin="899,20,0,219" Foreground="#FFF9F9F9" Width="170" DeleteClick="ButtonsDemoChip_DeleteClick_1" IconBackground="#FF673AB7" Click="ButtonsDemoChip_Click_1">
+  DeleteToolTip="Your friendly neighbour delete button" Margin="833,20,0,219" Foreground="#FFF9F9F9" Width="170" DeleteClick="ButtonsDemoChip_DeleteClick_1" IconBackground="#FF673AB7" Click="ButtonsDemoChip_Click_1" Grid.Column="1">
             <materialDesign:Chip.Background>
                 <ImageBrush/>
             </materialDesign:Chip.Background>
@@ -70,20 +74,22 @@
                 <Image  Source="programmer1.png"/>
             </materialDesign:Chip.Icon>
         </materialDesign:Chip>
-        <Button  Content="{materialDesign:PackIcon Kind=GoogleAnalytics, Size=30}"  ToolTip="Analisis" Margin="-4,84,991,144" Height="Auto" Background="Transparent" BorderBrush="Transparent"  />
-        <Button  Content="{materialDesign:PackIcon Kind=User, Size=30}"  ToolTip="Usuarios" Margin="-2,137,989,91" Height="Auto" Background="Transparent" BorderBrush="Transparent"  />
+        <Button  Content="{materialDesign:PackIcon Kind=GoogleAnalytics, Size=30}"  ToolTip="Analisis" Margin="-4,130,991,98" Height="Auto" Background="Transparent" BorderBrush="Transparent" Grid.ColumnSpan="2"  />
+        <Button  Content="{materialDesign:PackIcon Kind=User, Size=30}"  ToolTip="Usuarios" Margin="-2,184,989,44" Height="Auto" Background="Transparent" BorderBrush="Transparent" Click="Button_Click_1" Grid.ColumnSpan="2"  />
 
         <materialDesign:Card
-  Padding="8" Margin="116,91,678,0" Height="137" Foreground="{x:Null}">
+        Padding="8" Margin="50,91,678,0" Height="137" Foreground="{x:Null}" Grid.Column="1">
             <materialDesign:Card.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF7D27FF" Offset="1"/>
                     <GradientStop Color="#FFBB2086"/>
                 </LinearGradientBrush>
             </materialDesign:Card.Background>
+            <Button  Content="{materialDesign:PackIcon Kind=Power, Size=50}"  ToolTip="Start to Grap" Margin="-9,28,206,35" Height="Auto" Background="Transparent" BorderBrush="Transparent" Click="Button_Click"  />
+
         </materialDesign:Card>
         <materialDesign:Card
-            Padding="8" Margin="446,91,348,0" Height="137" Foreground="{x:Null}">
+            Padding="8" Margin="380,91,348,0" Height="137" Foreground="{x:Null}" Grid.Column="1">
             <materialDesign:Card.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFF51C40"/>
@@ -92,7 +98,7 @@
             </materialDesign:Card.Background>
         </materialDesign:Card>
         <materialDesign:Card
-            Padding="8" Margin="778,91,16,0" Height="137" Foreground="{x:Null}">
+            Padding="8" Margin="712,91,16,0" Height="137" Foreground="{x:Null}" Grid.Column="1">
             <materialDesign:Card.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF016CFD" Offset="1"/>
@@ -102,31 +108,31 @@
         </materialDesign:Card>
         <materialDesign:RatingBar
             Value="2"
-            x:Name="BasicRatingBar_Copy" Margin="608,197,348,43" Foreground="White" Background="Transparent"/>
-        <Label x:Name="label_Copy2" Content="REMAIN LIKE THIS" HorizontalAlignment="Left" Height="28" Margin="462,117,0,0" VerticalAlignment="Top" Width="147" FontSize="14" Foreground="#DDF9F9F9"/>
-        <Label x:Name="label_Copy3" Content="S/. 25,366,985" HorizontalAlignment="Left" Height="33" Margin="462,150,0,0" VerticalAlignment="Top" Width="129" FontSize="18" Foreground="#DDF9F9F9" FontWeight="Bold"/>
-        <Label x:Name="label_Copy4" Content="Actulizado Hoy" HorizontalAlignment="Left" Height="29" Margin="462,181,0,0" VerticalAlignment="Top" Width="112" FontSize="11" Foreground="#DDF9F9F9"/>
-        <Label x:Name="label1_Copy" Content="" HorizontalAlignment="Left" Height="64" Margin="628,119,0,0" VerticalAlignment="Top" Width="92">
+            x:Name="BasicRatingBar_Copy" Margin="542,197,348,43" Foreground="White" Background="Transparent" Grid.Column="1"/>
+        <Label x:Name="label_Copy2" Content="CLICK TO START DOWNLOAD THE NEW FILE" HorizontalAlignment="Left" Height="28" Margin="131,166,0,0" VerticalAlignment="Top" Width="224" FontSize="9" Foreground="#DDF9F9F9" Grid.Column="1"/>
+        <Label x:Name="label_Copy3" Content="S/. 25,366,985" HorizontalAlignment="Left" Height="33" Margin="396,150,0,0" VerticalAlignment="Top" Width="129" FontSize="18" Foreground="#DDF9F9F9" FontWeight="Bold" Grid.Column="1"/>
+        <Label x:Name="label_Copy4" Content="START" HorizontalAlignment="Left" Height="29" Margin="66,99,0,0" VerticalAlignment="Top" Width="112" FontSize="14" Foreground="#DDF9F9F9" Grid.Column="1" FontWeight="Bold" RenderTransformOrigin="-2.768,-2.517"/>
+        <Label x:Name="label1_Copy" Content="" HorizontalAlignment="Left" Height="64" Margin="562,119,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1">
             <Label.Background>
                 <ImageBrush ImageSource="tags.png" Stretch="Uniform"/>
             </Label.Background>
         </Label>
         <materialDesign:RatingBar
             Value="5"
-            x:Name="BasicRatingBar_Copy1" Margin="936,195,19,45" Foreground="White" Background="Transparent"/>
-        <Label x:Name="label_Copy5" Content="Ventas En Dolar" HorizontalAlignment="Left" Height="28" Margin="790,115,0,0" VerticalAlignment="Top" Width="148" FontSize="14" Foreground="#DDF9F9F9"/>
-        <Label x:Name="label_Copy6" Content="S/. 48,569,485" HorizontalAlignment="Left" Height="33" Margin="790,148,0,0" VerticalAlignment="Top" Width="130" FontSize="18" Foreground="#DDF9F9F9" FontWeight="Bold"/>
-        <Label x:Name="label_Copy7" Content="Actulizado Hoy" HorizontalAlignment="Left" Height="29" Margin="790,179,0,0" VerticalAlignment="Top" Width="113" FontSize="11" Foreground="#DDF9F9F9"/>
-        <Label x:Name="label1_Copy1" Content="" HorizontalAlignment="Left" Height="64" Margin="956,117,0,0" VerticalAlignment="Top" Width="93">
+            x:Name="BasicRatingBar_Copy1" Margin="870,195,19,45" Foreground="White" Background="Transparent" Grid.Column="1"/>
+        <Label x:Name="label_Copy5" Content="Ventas En Dolar" HorizontalAlignment="Left" Height="28" Margin="724,115,0,0" VerticalAlignment="Top" Width="148" FontSize="14" Foreground="#DDF9F9F9" Grid.Column="1"/>
+        <Label x:Name="label_Copy6" Content="S/. 48,569,485" HorizontalAlignment="Left" Height="33" Margin="724,148,0,0" VerticalAlignment="Top" Width="130" FontSize="18" Foreground="#DDF9F9F9" FontWeight="Bold" Grid.Column="1"/>
+        <Label x:Name="label_Copy7" Content="Actulizado Hoy" HorizontalAlignment="Left" Height="29" Margin="724,179,0,0" VerticalAlignment="Top" Width="113" FontSize="11" Foreground="#DDF9F9F9" Grid.Column="1"/>
+        <Label x:Name="label1_Copy1" Content="" HorizontalAlignment="Left" Height="64" Margin="890,117,0,0" VerticalAlignment="Top" Width="93" Grid.Column="1">
             <Label.Background>
                 <ImageBrush ImageSource="dollar.png" Stretch="Uniform"/>
             </Label.Background>
         </Label>
         <materialDesign:Card
     materialDesign:ShadowAssist.ShadowDepth="Depth1"
-    Padding="32" Margin="116,240,678,0" Height="297" Content="" Grid.RowSpan="2"/>
+    Padding="32" Margin="50,240,678,0" Height="297" Content="" Grid.RowSpan="2" Grid.Column="1"/>
 
-        <Wpf:PieChart LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Margin="116,240,678,99" Grid.RowSpan="2">
+        <Wpf:PieChart LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Margin="50,240,678,99" Grid.RowSpan="2" Loaded="PieChart_Loaded" Grid.Column="1">
             <Wpf:PieChart.Series>
                 <Wpf:PieSeries Title="Ventas" Values="25" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
@@ -143,7 +149,7 @@
 
         <ToggleButton
   Style="{StaticResource MaterialDesignActionToggleButton}"
-  ToolTip="MaterialDesignActionLightToggleButton" Margin="132,226,921,53" Background="#FF2195F2" Grid.Row="1">
+  ToolTip="MaterialDesignActionLightToggleButton" Margin="66,226,921,53" Background="#FF2195F2" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
       Kind="Sale" />
@@ -151,7 +157,7 @@
             <materialDesign:PackIcon
                 Kind="Sale" />
         </ToggleButton>
-        <Wpf:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" Margin="432,253,19,99" Grid.RowSpan="2" >
+        <Wpf:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" Margin="366,253,19,99" Grid.RowSpan="2" Grid.Column="1" >
             <Wpf:CartesianChart.AxisY>
                 <Wpf:Axis Title="Ventas del Mes" LabelFormatter="{Binding YFormatter}"/>
             </Wpf:CartesianChart.AxisY>
@@ -161,7 +167,7 @@
         </Wpf:CartesianChart>
         <ToggleButton
             Style="{StaticResource MaterialDesignActionToggleButton}"
-            ToolTip="MaterialDesignActionLightToggleButton" Margin="200,226,853,53" Background="#FFF34336" Grid.Row="1">
+            ToolTip="MaterialDesignActionLightToggleButton" Margin="134,226,853,53" Background="#FFF34336" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
                     Kind="Shopping" />
@@ -171,7 +177,7 @@
         </ToggleButton>
         <ToggleButton
             Style="{StaticResource MaterialDesignActionToggleButton}"
-            ToolTip="MaterialDesignActionLightToggleButton" Margin="278,226,775,53" Background="#FFFEC007" Grid.Row="1">
+            ToolTip="MaterialDesignActionLightToggleButton" Margin="212,226,775,53" Background="#FFFEC007" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
                     Kind="Reproduction" />
@@ -181,7 +187,7 @@
         </ToggleButton>
         <ToggleButton
             Style="{StaticResource MaterialDesignActionToggleButton}"
-            ToolTip="MaterialDesignActionLightToggleButton" Margin="358,226,695,53" Background="#FF607D8A" Grid.Row="1">
+            ToolTip="MaterialDesignActionLightToggleButton" Margin="292,226,695,53" Background="#FF607D8A" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
                     Kind="HomeAnalytics" />
@@ -191,7 +197,7 @@
         </ToggleButton>
         <ToggleButton
             Style="{StaticResource MaterialDesignActionToggleButton}"
-            ToolTip="MaterialDesignActionLightToggleButton" Margin="542,226,511,53" Background="#FF2195F2" Grid.Row="1">
+            ToolTip="MaterialDesignActionLightToggleButton" Margin="476,226,511,53" Background="#FF2195F2" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
                     Kind="Sale" />
@@ -201,7 +207,7 @@
         </ToggleButton>
         <ToggleButton
             Style="{StaticResource MaterialDesignActionToggleButton}"
-            ToolTip="MaterialDesignActionLightToggleButton" Margin="667,226,386,53" Background="#FFF34336" Grid.Row="1">
+            ToolTip="MaterialDesignActionLightToggleButton" Margin="601,226,386,53" Background="#FFF34336" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
                     Kind="Shopping" />
@@ -211,7 +217,7 @@
         </ToggleButton>
         <ToggleButton
             Style="{StaticResource MaterialDesignActionToggleButton}"
-            ToolTip="MaterialDesignActionLightToggleButton" Margin="790,226,263,53" Background="#FFFEC007" Grid.Row="1">
+            ToolTip="MaterialDesignActionLightToggleButton" Margin="724,226,263,53" Background="#FFFEC007" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
                     Kind="Reproduction" />
@@ -221,7 +227,7 @@
         </ToggleButton>
         <ToggleButton
             Style="{StaticResource MaterialDesignActionToggleButton}"
-            ToolTip="MaterialDesignActionLightToggleButton" Margin="906,226,147,53" Background="#FF607D8A" Grid.Row="1">
+            ToolTip="MaterialDesignActionLightToggleButton" Margin="840,226,147,53" Background="#FF607D8A" Grid.Row="1" Grid.Column="1">
             <materialDesign:ToggleButtonAssist.OnContent>
                 <materialDesign:PackIcon
                     Kind="Check" />
@@ -229,8 +235,9 @@
             <materialDesign:PackIcon
                 Kind="Check" />
         </ToggleButton>
-        <Image Margin="8,210,999,23" Source="1550062568995.png" Stretch="Fill" RenderTransformOrigin="0.115,0.551" Grid.Row="1"/>
-
+        <Image Margin="8,210,999,23" Source="1550062568995.png" Stretch="Fill" RenderTransformOrigin="0.115,0.551" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ProgressBar Name="p1" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="190" Grid.Column="1" Margin="134,151,0,0" ValueChanged="ProgressBar_ValueChanged_6" Background="#FF0778FF" BorderBrush="#FF9DDB9D">
+        </ProgressBar>
     </Grid>
 
 </Window>
