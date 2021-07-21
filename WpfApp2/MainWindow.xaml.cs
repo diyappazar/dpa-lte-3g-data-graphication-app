@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -18,41 +19,76 @@ using System.IO;
 using Renci.SshNet;
 using Renci.SshNet.Common;
 using Renci.SshNet.Sftp;
+using System.Threading;
 
 namespace WpfApp2
 {
 
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-            this.chart();
-            this.datosbacis();
-            this.getFile();
-            Boolean status = false;
+        long FileSize = 0;
+        DispatcherTimer Timer = new DispatcherTimer(); // zamanlayıcı objesini oluşturduk
+
+        public MainWindow() { 
+            InitializeComponent(); // Tüm componentleri başlatıyor
+            Timer.Interval = TimeSpan.FromMilliseconds(10); // zamanlayıcının her 10 ms'de artmasını sağladık
+            Timer.Tick += GetData; // Her zaman artışında GetData() adlı fonksiyondan return alınıp veri çekiliyor.
+            this.chart(); // chart başlatıldı.
+            this.datosbacis(); // datosbacis başlatıldı
         }
-        
-        public void getFile() //Bu fonksiyon SFTP/FTP server'dan belirtilen dosyayı indirecek.
+        void getFile() //Bu fonksiyon SFTP/FTP server'dan belirtilen dosyayı indirecek.
         {
+            Timer.Start(); // zamanlayıcının tanımını yaptık ve başlattık. 
             String Host = "68.183.74.196";
             int Port = 22;
             String RemoteFileName = "/var/test.csv";
-            String LocalDestinationFilename = @"in_process/new.csv";
+            String LocalDestinationFilename = @"in_process/test.csv";
             String Username = "root";
             String Password = "Diyap11Pazar";
-
-            using (var sftp = new SftpClient(Host, Port, Username, Password))
+            //Yukarıda server'a bağlanmak için gerekli olan bilgileri ssh.net kütüphanesi formatında ki variablellara attık. 
+            using (var sftp = new SftpClient(Host, Port, Username, Password)) // sftp objesini oluşturduk bu kütüphanede ki StfpClient fonksiyonunu alacak.
             {
-                sftp.Connect();   
-                using (var file = File.OpenWrite(LocalDestinationFilename))
+                sftp.Connect();   //bağlantı başladı
+                using (var file = File.OpenWrite(LocalDestinationFilename)) //file değişkenini oluşturduk ve sistemde var olan File classının openwrite özelliğini kullanarak dosyayı oluşturduk.
                 {
-                    sftp.DownloadFile(RemoteFileName, file);
-                    this.status = true;
+                    FileSize = sftp.Get(RemoteFileName).Attributes.Size;//sftp bağlanıtsını kullanarak get fonksiyonu ile dosya boyutunu öğrendik.
+                    sftp.DownloadFile(RemoteFileName, file); //Dosyayı belirtilen lokasyona indirdik.
                 }
-                sftp.Disconnect();
+                sftp.Disconnect();// bağlantıyı kestik.
                
             }
+        }
+        void GetData(object sender, EventArgs e) // GetData fonksiyonun oluşturduk bu fonksiyon bilgi gönderecek, gönderilen bilginin alıcısı progress bar ve altında ki label.
+        {
+            if (File.Exists(@"in_process/test.csv") & FileSize > 0 && new FileInfo(@"in_process/test.csv").Length > 0)//File.Exists dosyanın inip inmediğini kontrol ediyor daha sonra dosya boyutunun >0 ve byte cinsinden değerini>0 kontrol ediyor
+            {
+                var downloaded = new FileInfo(@"in_process/test.csv").Length;//indirilen dosya byte biçiminden alınıyor.
+                Pb1.Value = downloaded * 100 / FileSize;//alınan bu değer küçük bir formül ile progress barda gösteriliyor.
+
+                if (Pb1.Value == 100) // eğer progressbar >100den mesaj bu:
+                {
+                    this.ShowMsg("Download Finished! 100%");
+                }
+                else// eğer küçük ise bu şekilde bir yazı çıkacak.
+                {
+                    this.ShowMsg("Downloading... " + Pb1.Value + "%");
+                }
+
+            }
+        }
+        void DownloadFile(object sender, RoutedEventArgs e)// Bilgisayarın dosya inene kadar threadlerini dondurmasını istiyoruz bu fonksiyonun görevi bu ve xaml ile doğrudan ilişkili butona basınca bu çalışıyor.
+        {
+            Thread Proc = new Thread(new ThreadStart(this.getFile));//bu kısım ile butona basınca getFile çalışıyor...
+            Proc.SetApartmentState(ApartmentState.STA);//ve sonuç alınıncaya kadar başka işlem yapılmıyor.
+            Proc.Start();
+        }
+        void ShowMsg(String Msg)
+        {
+            label_Copy2.Content = Msg; // progressbar altında ki mesaj bu kısım ile aktarılıyor.
+        }
+        public void PieChart_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
         public void chart()
         {
@@ -61,8 +97,6 @@ namespace WpfApp2
 
             DataContext = this;
         }
-
-
         public void datosbacis()
         {
 
@@ -107,21 +141,14 @@ namespace WpfApp2
 
             DataContext = this;
         }
-
-
         public Func<ChartPoint, string> PointLabel { get; set; }
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
-
-
-        private void ButtonsDemoChip_DeleteClick_1(object sender, RoutedEventArgs e)
+        private void LogOut(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-    
-
         private void Chart_OnDataClick(object sender, ChartPoint chartPoint)
         {
             var chart = (LiveCharts.Wpf.PieChart)chartPoint.ChartView;
@@ -134,40 +161,6 @@ namespace WpfApp2
             selectedSeries.PushOut = 8;
         }
 
-        private void ButtonsDemoChip_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void ButtonsDemoChip_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.getFile();
-        }
-
-        private void PieChart_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-        public void ProgressBar_ValueChanged_6(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (this.status == true)
-            {
-                p1.Value = 100;
-            }
-            else
-            {
-                p1.Value = 0;
-            }
-        }
     }
 }

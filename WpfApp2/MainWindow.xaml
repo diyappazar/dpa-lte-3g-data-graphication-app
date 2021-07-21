@@ -66,7 +66,7 @@
   IsDeletable="True"
   x:Name="ButtonsDemoChip"
   ToolTip="Just a tool tip"
-  DeleteToolTip="Your friendly neighbour delete button" Margin="833,20,0,219" Foreground="#FFF9F9F9" Width="170" DeleteClick="ButtonsDemoChip_DeleteClick_1" IconBackground="#FF673AB7" Click="ButtonsDemoChip_Click_1" Grid.Column="1">
+  DeleteToolTip="Your friendly neighbour delete button" Margin="833,20,0,219" Foreground="#FFF9F9F9" Width="170" DeleteClick="LogOut" IconBackground="#FF673AB7" Click="LogOut" Grid.Column="1">
             <materialDesign:Chip.Background>
                 <ImageBrush/>
             </materialDesign:Chip.Background>
@@ -75,7 +75,7 @@
             </materialDesign:Chip.Icon>
         </materialDesign:Chip>
         <Button  Content="{materialDesign:PackIcon Kind=GoogleAnalytics, Size=30}"  ToolTip="Analisis" Margin="-4,130,991,98" Height="Auto" Background="Transparent" BorderBrush="Transparent" Grid.ColumnSpan="2"  />
-        <Button  Content="{materialDesign:PackIcon Kind=User, Size=30}"  ToolTip="Usuarios" Margin="-2,184,989,44" Height="Auto" Background="Transparent" BorderBrush="Transparent" Click="Button_Click_1" Grid.ColumnSpan="2"  />
+        <Button  Content="{materialDesign:PackIcon Kind=User, Size=30}"  ToolTip="Usuarios" Margin="-2,184,989,44" Height="Auto" Background="Transparent" BorderBrush="Transparent" Grid.ColumnSpan="2"  />
 
         <materialDesign:Card
         Padding="8" Margin="50,91,678,0" Height="137" Foreground="{x:Null}" Grid.Column="1">
@@ -85,7 +85,7 @@
                     <GradientStop Color="#FFBB2086"/>
                 </LinearGradientBrush>
             </materialDesign:Card.Background>
-            <Button  Content="{materialDesign:PackIcon Kind=Power, Size=50}"  ToolTip="Start to Grap" Margin="-9,28,206,35" Height="Auto" Background="Transparent" BorderBrush="Transparent" Click="Button_Click"  />
+            <Button  Content="{materialDesign:PackIcon Kind=Power, Size=50}"  ToolTip="Start to Grap" Margin="-8,28,205,35" Height="Auto" Background="Transparent" BorderBrush="Transparent" Click="DownloadFile"  />
 
         </materialDesign:Card>
         <materialDesign:Card
@@ -109,7 +109,7 @@
         <materialDesign:RatingBar
             Value="2"
             x:Name="BasicRatingBar_Copy" Margin="542,197,348,43" Foreground="White" Background="Transparent" Grid.Column="1"/>
-        <Label x:Name="label_Copy2" Content="CLICK TO START DOWNLOAD THE NEW FILE" HorizontalAlignment="Left" Height="28" Margin="131,166,0,0" VerticalAlignment="Top" Width="224" FontSize="9" Foreground="#DDF9F9F9" Grid.Column="1"/>
+        <Label x:Name="label_Copy2" HorizontalAlignment="Left" Height="28" Margin="131,166,0,0" VerticalAlignment="Top" Width="224" FontSize="9" Foreground="#DDF9F9F9" Grid.Column="1"/>
         <Label x:Name="label_Copy3" Content="S/. 25,366,985" HorizontalAlignment="Left" Height="33" Margin="396,150,0,0" VerticalAlignment="Top" Width="129" FontSize="18" Foreground="#DDF9F9F9" FontWeight="Bold" Grid.Column="1"/>
         <Label x:Name="label_Copy4" Content="START" HorizontalAlignment="Left" Height="29" Margin="66,99,0,0" VerticalAlignment="Top" Width="112" FontSize="14" Foreground="#DDF9F9F9" Grid.Column="1" FontWeight="Bold" RenderTransformOrigin="-2.768,-2.517"/>
         <Label x:Name="label1_Copy" Content="" HorizontalAlignment="Left" Height="64" Margin="562,119,0,0" VerticalAlignment="Top" Width="92" Grid.Column="1">
@@ -235,9 +235,8 @@
             <materialDesign:PackIcon
                 Kind="Check" />
         </ToggleButton>
-        <Image Margin="8,210,999,23" Source="1550062568995.png" Stretch="Fill" RenderTransformOrigin="0.115,0.551" Grid.Row="1" Grid.ColumnSpan="2"/>
-        <ProgressBar Name="p1" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="190" Grid.Column="1" Margin="134,151,0,0" ValueChanged="ProgressBar_ValueChanged_6" Background="#FF0778FF" BorderBrush="#FF9DDB9D">
-        </ProgressBar>
+        <Image Margin="8,210,999,23" Source="1550062568995.png" Stretch="Fill" RenderTransformOrigin="0.115,0.551" Grid.Row="1" Grid.ColumnSpan="2" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"/>
+        <ProgressBar x:Name="Pb1" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="190" Grid.Column="1" Margin="134,151,0,0" Background="#FF0778FF" BorderBrush="#FF9DDB9D" Maximum="100" Minimum="0" />
     </Grid>
 
 </Window>
