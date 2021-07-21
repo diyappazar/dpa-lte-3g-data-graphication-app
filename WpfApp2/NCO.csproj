@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{8BF59B50-B92A-4C32-A213-4767B9B61AD4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WpfApp2</RootNamespace>
-    <AssemblyName>WpfApp2</AssemblyName>
+    <RootNamespace>NCO</RootNamespace>
+    <AssemblyName>NCO</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -33,6 +33,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>v7dr4YaW_400x400.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
@@ -137,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="1550062568995.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="v7dr4YaW_400x400.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

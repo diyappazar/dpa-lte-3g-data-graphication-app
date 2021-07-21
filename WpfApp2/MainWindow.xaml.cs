@@ -52,7 +52,7 @@ namespace WpfApp2
                 using (var file = File.OpenWrite(LocalDestinationFilename)) //file değişkenini oluşturduk ve sistemde var olan File classının openwrite özelliğini kullanarak dosyayı oluşturduk.
                 {
                     FileSize = sftp.Get(RemoteFileName).Attributes.Size;//sftp bağlanıtsını kullanarak get fonksiyonu ile dosya boyutunu öğrendik.
-                    sftp.DownloadFile(RemoteFileName, file); //Dosyayı belirtilen lokasyona indirdik.
+                    sftp.DownloadFile(RemoteFileName, file); //Dosyayı belirtilen lokasyona indirdik..
                 }
                 sftp.Disconnect();// bağlantıyı kestik.
                
@@ -82,9 +82,9 @@ namespace WpfApp2
             Proc.SetApartmentState(ApartmentState.STA);//ve sonuç alınıncaya kadar başka işlem yapılmıyor.
             Proc.Start();
         }
-        void ShowMsg(String Msg)
+        void ShowMsg(String Msg)// progressbar altında ki mesaj bu kısım ile aktarılıyor.
         {
-            label_Copy2.Content = Msg; // progressbar altında ki mesaj bu kısım ile aktarılıyor.
+            label_Copy2.Content = Msg; 
         }
         public void PieChart_Loaded(object sender, RoutedEventArgs e)
         {
