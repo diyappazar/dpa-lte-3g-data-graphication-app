@@ -55,6 +55,7 @@ namespace WpfApp2
                     sftp.DownloadFile(RemoteFileName, file); //Dosyayı belirtilen lokasyona indirdik..
                 }
                 sftp.Disconnect();// bağlantıyı kestik.
+
                
             }
         }
