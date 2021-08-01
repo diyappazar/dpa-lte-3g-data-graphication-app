@@ -43,7 +43,7 @@
                 </Style>
             </Grid.Resources>
 
-            <lvc:CartesianChart Series="{Binding MySeriesCollection}" Margin="-15,0,10,32">
+            <lvc:CartesianChart Series="{Binding MySeriesCollection}" Margin="0,0,10,32">
 
 
                 <lvc:CartesianChart.AxisX>

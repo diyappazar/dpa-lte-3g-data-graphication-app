@@ -143,7 +143,7 @@ namespace WpfApp2
                 {
                     if (!Directory.Exists("files/backup"))
                     {
-                        Directory.CreateDirectory("files/backup");
+                        Directory.CreateDirectory("files/backup"); 
                     }
 
                     File.Move("files/test.csv", "files/backup/test - " + DateTime.Now.ToString().Replace("/", ".").Replace(":", ".") + ".csv");
