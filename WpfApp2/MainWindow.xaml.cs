@@ -72,7 +72,7 @@ namespace WpfApp2
 
                     if (kpi != "")
                     {
-                        Values1.Add(Convert.ToDouble(kpi) * 100);;
+                        Values1.Add(Convert.ToDouble(kpi) * 100);
                         Values2.Add(Convert.ToDouble(data));
                         Labels.Add(time.ToString());
                     }
