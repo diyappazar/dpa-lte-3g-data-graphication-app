@@ -7,119 +7,45 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Class="WpfApp2.MainWindow"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="582" Width="1085.3" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" AllowsTransparency="True" WindowStyle="None">
-    <Grid SnapsToDevicePixels="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+    x:Name="MyForm"
+        Title="MainWindow" Height="580" Width="1000" MinHeight="580" MinWidth="1000" WindowStartupLocation="CenterScreen" ShowInTaskbar="True" AllowsTransparency="False" WindowStyle="ToolWindow">
+    <Grid>
 
-        <materialDesign:ColorZone
-  Mode="PrimaryMid"
-  Padding="16" Background="#104e9f">
-            <DockPanel>
-                <StackPanel
-      Orientation="Horizontal"
-      materialDesign:RippleAssist.IsCentered="True">
-                    <Button
-        Style="{DynamicResource MaterialDesignToolForegroundButton}"
-        Margin="8 0 0 0"
-        Panel.ZIndex="0"/>
-                </StackPanel>
-            </DockPanel>
-        </materialDesign:ColorZone>
-
-        <materialDesign:Card
-  Background="#104e9f"
-  Foreground="#DDFFFFFF"
-  Padding="32"  UniformCornerRadius="0" Margin="0,72,987,0" Height="510"/>
-
-        <Grid Margin="103,74,0,0">
-            <Grid.Resources>
-                <Style x:Key="CleanSeparator" TargetType="{x:Type lvc:Separator}">
-                    <Setter Property="IsEnabled" Value="False"/>
-                </Style>
-            </Grid.Resources>
-
-            <lvc:CartesianChart Series="{Binding MySeriesCollection}" Margin="0,0,10,32">
-
-
-                <lvc:CartesianChart.AxisX>
-                    <lvc:Axis LabelsRotation="20" Labels="{Binding Labels}" Position="LeftBottom" >
-                        <lvc:Axis.Separator >
-                            <lvc:Separator Step="1"/>
-                        </lvc:Axis.Separator>
-                    </lvc:Axis>
-                </lvc:CartesianChart.AxisX>
-
-                <lvc:CartesianChart.AxisY>
-                    <lvc:Axis x:Name="Axis" ShowLabels="False">
-                        <lvc:Axis.Sections>
-                            <lvc:AxisSection Value="98" SectionWidth="2" Label="Best">
-                                <lvc:AxisSection.Fill>
-                                    <SolidColorBrush Color="#16f202" Opacity=".8"/>
-                                </lvc:AxisSection.Fill>
-                            </lvc:AxisSection>
-                            <lvc:AxisSection Value="97" SectionWidth="1" Label="Good">
-                                <lvc:AxisSection.Fill>
-                                    <SolidColorBrush Color="#16f202" Opacity=".4"/>
-                                </lvc:AxisSection.Fill>
-                            </lvc:AxisSection>
-                            <lvc:AxisSection Value="85" SectionWidth="12" Label="Bad">
-                                <lvc:AxisSection.Fill>
-                                    <SolidColorBrush Color="#FF8585" Opacity=".4"/>
-                                </lvc:AxisSection.Fill>
-                            </lvc:AxisSection>
-                            <lvc:AxisSection Value="0" SectionWidth="85" Label="Very Bad">
-                                <lvc:AxisSection.Fill>
-                                    <SolidColorBrush Color="#FF8585" Opacity=".8"/>
-                                </lvc:AxisSection.Fill>
-                            </lvc:AxisSection>
-                        </lvc:Axis.Sections>
-                    </lvc:Axis>
-                    <lvc:Axis Title="Kpi" LabelFormatter="{Binding MyFormatter}" Position="LeftBottom"/>
-                    <lvc:Axis Title="Data" LabelFormatter="{Binding MyFormatter2}" Position="RightTop"/>
-                </lvc:CartesianChart.AxisY>
-            </lvc:CartesianChart>
-            <Button  Content="{materialDesign:PackIcon Kind=Power, Size=50}"  ToolTip="Start to Grap" Margin="-94,0,1002,442" Height="58" Background="Transparent" BorderBrush="Transparent" Click="DownloadFile" VerticalAlignment="Bottom" RenderTransformOrigin="4.297,-4.06"  />
-            <Label x:Name="label_Copy4" Content="START" HorizontalAlignment="Left" Height="29" Margin="-78,68,0,0" VerticalAlignment="Top" Width="112" FontSize="14" Foreground="#DDF9F9F9" FontWeight="Bold" RenderTransformOrigin="-2.768,-2.517"/>
-        </Grid>
-
-        <ToggleButton
-  Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-  ToolTip="MaterialDesignFlatPrimaryToggleButton"
-  IsChecked="False" Margin="834,21,221,533" Height="Auto" Width="Auto" Foreground="#FF56618D"/>
-
-        <Separator HorizontalAlignment="Left" Height="16" Margin="1013,28,0,0" VerticalAlignment="Top" Width="24" RenderTransformOrigin="0.5,0.5">
-            <Separator.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Separator.RenderTransform>
-        </Separator>
-
-        <materialDesign:Chip
+        <Canvas HorizontalAlignment="Stretch" Height="65" VerticalAlignment="Top" Width="auto" Background="#FF104E9F" Margin="100,0,0,0">
+            <ProgressBar x:Name="Pb1" HorizontalAlignment="Right" Height="15" VerticalAlignment="Top" Width="181" Background="White" BorderBrush="#FF9DDB9D" Maximum="100" Minimum="0" Foreground="#FF0778FF" Canvas.Left="103" Canvas.Top="25" />
+            <Button x:Name="goHome" Click="goBack" Content="{materialDesign:PackIcon Kind=GoogleAnalytics, Size=30}"  ToolTip="Analisis" Height="65" Background="Transparent" BorderBrush="Transparent"  Width="98"  />
+            <materialDesign:Chip
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
   Content="Hello, tester!"
   IsDeletable="True"
-  x:Name="ButtonsDemoChip"
   ToolTip="Just a tool tip"
-  DeleteToolTip="Close" Margin="899,20,0,530" Foreground="#FFF9F9F9" Width="170" DeleteClick="LogOut" IconBackground="#FF673AB7" Click="LogOut">
-            <materialDesign:Chip.Background>
-                <ImageBrush/>
-            </materialDesign:Chip.Background>
-            <materialDesign:Chip.Icon>
-                <Image Source="favicon.ico" Height="36" Width="34"/>
-            </materialDesign:Chip.Icon>
-        </materialDesign:Chip>
-        <Image Margin="8,481,999,23" Source="1550062568995.png" Stretch="Fill" RenderTransformOrigin="0.115,0.551" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"/>
-        <ProgressBar x:Name="Pb1" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="181" Margin="93,21,0,0" Background="White" BorderBrush="#FF9DDB9D" Maximum="100" Minimum="0" Foreground="#FF0778FF" />
-        <Label x:Name="label_Copy2" HorizontalAlignment="Left" Height="28" Margin="276,15,0,0" VerticalAlignment="Top" Width="224" FontSize="9" Foreground="#DDF9F9F9" RenderTransformOrigin="0.757,-1.625"/>
-        <Button  Content="{materialDesign:PackIcon Kind=GoogleAnalytics, Size=30}"  ToolTip="Analisis" Margin="-2,6,989,533" Height="Auto" Background="Transparent" BorderBrush="Transparent"  />
+  Foreground="#FFF9F9F9" Width="180" IconBackground="#FF673AB7" Canvas.Top="17" Canvas.Right="10" HorizontalContentAlignment="Right" VerticalContentAlignment="Center">
+                <materialDesign:Chip.Background>
+                    <ImageBrush/>
+                </materialDesign:Chip.Background>
+                <materialDesign:Chip.Icon>
+                    <Image Source="1550062568995.png" Height="36" Width="34"/>
+                </materialDesign:Chip.Icon>
+            </materialDesign:Chip>
+            <Label x:Name="label_Copy2" HorizontalAlignment="Left" Height="10" VerticalAlignment="Top" Width="181" FontSize="9" Foreground="#DDF9F9F9" RenderTransformOrigin="0.491,0.5" Canvas.Left="103" Canvas.Top="45"/>
+        </Canvas>
+
+
+        <Canvas HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="100" Height="auto" Background="#FF104E9F" >
+            <Image Canvas.Bottom="10" HorizontalAlignment="Center" VerticalAlignment="Bottom" Source="1550062568995.png" Stretch="Uniform" RenderTransformOrigin="0.115,0.551" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" Canvas.Left="10"  Height="68" Width="78"/>
+            <Button  Content="{materialDesign:PackIcon Kind=Power, Size=50}"  ToolTip="Start to Grap" Height="66" Background="Transparent" BorderBrush="Transparent" Click="DownloadFile" VerticalAlignment="Bottom" RenderTransformOrigin="4.297,-4.06" Canvas.Left="10" Canvas.Top="10" Width="78"  />
+            <TextBlock TextAlignment="Center" x:Name="label_Copy4" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="78" FontSize="14" Foreground="#DDF9F9F9" FontWeight="Bold" RenderTransformOrigin="0.494,0.483" Canvas.Left="10" Canvas.Top="81"><Run Text="START"/></TextBlock>
+        </Canvas>
+
+        <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto" Margin="100,65,0,0">
+            <Canvas x:Name="Dashboard" Background="white" Height="auto" Width="auto">
+                <Grid x:Name="DashboardContent" Width="auto" Height="auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                </Grid>
+                <Canvas Visibility="Collapsed" Background="Red" x:Name="BigPage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
+                </Canvas>
+            </Canvas>
+        </ScrollViewer>
 
     </Grid>
 
